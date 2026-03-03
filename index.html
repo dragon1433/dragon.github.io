@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LongTao - Personal Homepage</title>
+    <!-- 引入 Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50; /* 深蓝灰色 */
+            --accent-color: #3498db;  /* 亮蓝色链接 */
+            --bg-decoration: #eef2f7; /* 背景装饰色 */
+            --text-color: #333;
+            --sidebar-width: 280px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #fff;
+            position: relative;
+        }
+
+        /* 背景装饰三角形 (模拟截图风格) */
+        .bg-shape {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.6;
+            fill: var(--bg-decoration);
+        }
+
+        /* 布局容器 */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* 左侧侧边栏 */
+        .sidebar {
+            width: var(--sidebar-width);
+            flex-shrink: 0;
+            padding-right: 40px;
+            text-align: center;
+            position: sticky;
+            top: 40px;
+            height: fit-content;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            background-color: #ddd; /* 占位色 */
+        }
+
+        .name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 10px 0 5px;
+            color: var(--primary-color);
+        }
+
+        .title {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .contact-info li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            width: 25px;
+            color: #777;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        .social-links {
+            margin-top: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: #555;
+            font-size: 1.4rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* 右侧主要内容 */
+        .main-content {
+            flex-grow: 1;
+            padding-left: 20px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .vision-box {
+            background-color: #f8fbff;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+        }
+
+        .education-item {
+            margin-bottom: 20px;
+        }
+
+        .edu-school {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .edu-degree {
+            color: #555;
+        }
+
+        .edu-date {
+            font-size: 0.9rem;
+            color: #888;
+            float: right;
+        }
+
+        /* 按钮样式 */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            border: none;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            text-decoration: none;
+        }
+
+        /* 响应式设计：手机端适配 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                padding-right: 0;
+                margin-bottom: 40px;
+                position: static;
+            }
+            .main-content {
+                padding-left: 0;
+            }
+            .edu-date {
+                float: none;
+                display: block;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 背景装饰 SVG (随机三角形) -->
+    <svg class="bg-shape" style="top: 10%; left: 5%; width: 100px;" viewBox="0 0 100 100"><polygon points="0,0 50,100 100,0" /></svg>
+    <svg class="bg-shape" style="top: 40%; right: 10%; width: 150px;" viewBox="0 0 100 100"><polygon points="0,0 100,50 0,100" /></svg>
+    <svg class="bg-shape" style="bottom: 15%; left: 15%; width: 80px;" viewBox="0 0 100 100"><polygon points="50,0 100,100 0,100" /></svg>
+
+    <div class="container">
+        <!-- 左侧侧边栏 -->
+        <aside class="sidebar">
+            <!-- 请替换下面的 src 为你的照片文件名，例如 images/me.jpg -->
+            <img src="avatar.jpg" alt="LongTao" class="profile-img">
+            
+            <h1 class="name">LongTao</h1>
+            <p class="title">Student at Hainan University<br><span style="font-size:0.9em; color:#888;">Major: NIIT (Software Engineering)</span></p>
+
+            <ul class="contact-info">
+                <li><i class="fas fa-map-marker-alt"></i> Haikou, Hainan, China</li>
+                <li><i class="fas fa-university"></i> Hainan University</li>
+                <li><i class="fas fa-envelope"></i> <a href="2316287067@qq.com">Email Me</a></li>
+            </ul>
+
+            <div class="social-links">
+                <!-- 替换 # 为你的真实链接 -->
+                <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank" title="ResearchGate"><i class="ai ai-researchgate"></i></a> 
+                <!-- 如果没有 ResearchGate 图标，可以用 fa-solid fa-graduation-cap 代替 -->
+                <a href="#" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                <a href="#" target="_blank" title="Twitter/X"><i class="fab fa-twitter"></i></a>
+            </div>
+        </aside>
+
+        <!-- 右侧主要内容 -->
+        <main class="main-content">
+            
+            <section id="about">
+                <h2><i class="fas fa-user-circle"></i> About Me</h2>
+                <p>
+                    Hello! My name is <strong>LongTao</strong>. I am currently a student majoring in <strong>NIIT (Software Engineering)</strong> at <a href="https://www.hainanu.edu.cn/" target="_blank">Hainan University</a>. 
+                </p>
+                <p>
+                    My research interests lie at the intersection of <strong>Software Engineering</strong>, <strong>Artificial Intelligence</strong>, and <strong>Data Science</strong>. I am passionate about developing efficient algorithms and building intelligent systems that can solve real-world problems. 
+                </p>
+                <p>
+                    Prior to my current studies, I have built a solid foundation in computer science through various projects and coursework. I am always eager to learn new technologies and collaborate with like-minded researchers.
+                </p>
+
+                <div class="vision-box">
+                    <strong><i class="fas fa-lightbulb"></i> Vision:</strong> To leverage technology to bridge the gap between theoretical algorithms and practical applications, making software more intelligent and accessible.
+                </div>
+            </section>
+
+            <section id="education">
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                
+                <div class="education-item">
+                    <div class="edu-school">Hainan University <span style="font-weight:normal; font-size:0.9em;">(Haikou, China)</span></div>
+                    <div class="edu-degree">Bachelor of Engineering in NIIT (Software Engineering)</div>
+                    <div class="edu-date">2023 - Present (Expected 2027)</div>
+                    <p style="font-size: 0.95em; margin-top: 5px;">
+                        <strong>Relevant Coursework:</strong> Data Structures, Algorithms, Machine Learning, Web Development, Database Systems.
+                    </p>
+                </div>
+
+                <!-- 如果有高中或其他经历可以加在这里 -->
+                <!-- 
+                <div class="education-item">
+                    <div class="edu-school">Your High School Name</div>
+                    <div class="edu-degree">High School Diploma</div>
+                    <div class="edu-date">2019 - 2022</div>
+                </div> 
+                -->
+            </section>
+
+            <section id="interests">
+                <h2><i class="fas fa-heart"></i> Research Interests</h2>
+                <p>
+                    Autonomous Software Systems, AI for Science, Large Language Models, Cloud Computing, and Open Source Software.
+                </p>
+            </section>
+
+            <section id="updates">
+                <h2><i class="fas fa-clock"></i> Updates</h2>
+                <button class="btn" onclick="showUpdateTime()">📅 Show Last Update Time</button>
+                <p id="time-display" style="margin-top: 10px; font-weight: bold; color: var(--accent-color);"></p>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        function showUpdateTime() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+            const timeString = now.toLocaleDateString('en-US', options);
+            document.getElementById('time-display').innerText = "Page last viewed/updated: " + timeString;
+        }
+    </script>
+</body>
+</html>
